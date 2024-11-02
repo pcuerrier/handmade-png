@@ -1,0 +1,69 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "windows": {
+        "options": {
+            "shell": {
+                "executable": "cmd.exe",
+                "args": [
+                    // Laptop
+                    //"/d", "/c", "C:\\\"Program Files\\Microsoft Visual Studio\"\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat", "&"
+                    // Desktop
+                    "/d", "/c", "D:\\Microsoft\\VisualStudio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat", "&"
+                ]
+            }
+        }
+    },
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build Debug - Win32",
+            "command": "cl.exe",
+            // https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category?view=msvc-170
+            "args": [
+                "/FC", // File fullnames
+                "/Od", // No optimization
+                "/MTd", // Link static version of the C-Standard Library - Debug version (DEFINES _DEBUG)
+                "/Z7", // Produce Debug file
+                "/WX", // Treat warnings as errors
+                "/W4", // Warning level
+                "/options:strict",
+                "/std:c17",
+                //"/showIncludes",
+                "/TC", // Specifies all source files are C
+                "/utf-8",
+                "/wd4100", // Unreferenced formal parameter
+                "/wd4189", // Unsused local variables (will be optimized out by compiler)
+                "/wd4201", // Nameless struct
+                "/nologo", // Disable Microsoft C++ banner
+                "/DUNICODE",
+                "/I${workspaceFolder}\\ext\\SDL\\include\\",
+                "/Fo:",
+                "${workspaceFolder}\\bin\\int\\debug\\",
+                "/Fe:",
+                "${workspaceFolder}\\bin\\debug\\handmade.exe",
+                "${workspaceFolder}\\src\\main.c",
+                "/link",
+                "/opt:ref",
+                "/LIBPATH:${workspaceFolder}\\ext\\glfw\\build\\src\\Debug\\",
+                "glfw3.lib",
+                "User32.lib",
+                "Gdi32.lib",
+                "Shell32.lib",
+                "Winmm.lib"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+              "kind": "build",
+              "isDefault": true
+            },
+            "presentation": {
+                "reveal":"always"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
