@@ -43,15 +43,19 @@
                 "${workspaceFolder}\\bin\\int\\debug\\",
                 "/Fe:",
                 "${workspaceFolder}\\bin\\debug\\handmade.exe",
+                "${workspaceFolder}\\src\\swap.c",
+                "${workspaceFolder}\\src\\display.c",
                 "${workspaceFolder}\\src\\main.c",
                 "/link",
+                "/SUBSYSTEM:CONSOLE",
                 "/opt:ref",
-                "/LIBPATH:${workspaceFolder}\\ext\\glfw\\build\\src\\Debug\\",
-                "glfw3.lib",
+                "/LIBPATH:${workspaceFolder}\\ext\\SDL\\lib\\x64\\",
                 "User32.lib",
                 "Gdi32.lib",
                 "Shell32.lib",
-                "Winmm.lib"
+                "Winmm.lib",
+                "SDL2main.lib",
+                "SDL2.lib"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
