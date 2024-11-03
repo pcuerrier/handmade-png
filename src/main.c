@@ -1,6 +1,7 @@
 #include "display.h"
 #include <stdio.h>
 #include <SDL/SDL_main.h>
+#include <zlib/zlib.h>
 
 /*******************************************************************************
  * Constants
@@ -14,6 +15,7 @@ const float SCALE = 640.0f;
 *******************************************************************************/
 void setup()
 {
+    //FILE* fp = fopen("data/basi0g01.png", "rb");
 }
 
 void process_input(SDL_API* sdl, ColorBuffer* color_buffer)
@@ -96,7 +98,7 @@ int main(int argc, char** argv)
     {
         uint32_t start_frame_ticks = (uint32_t)SDL_GetTicks();
         process_input(&sdl, &color_buffer);
-        update(&sdl, color_buffer.width, color_buffer.height);
+        //update(&sdl, color_buffer.width, color_buffer.height);
         render(&sdl, &color_buffer);
         uint32_t elapsed_frame_ticks = (uint32_t)SDL_GetTicks() - start_frame_ticks;
         if ((float)elapsed_frame_ticks <= FRAME_TARGET_TIME)

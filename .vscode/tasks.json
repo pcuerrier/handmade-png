@@ -38,6 +38,8 @@
                 "/wd4201", // Nameless struct
                 "/nologo", // Disable Microsoft C++ banner
                 "/DUNICODE",
+                "/I${workspaceFolder}\\ext\\",
+                "/I${workspaceFolder}\\ext\\zlib\\build\\",
                 "/I${workspaceFolder}\\ext\\SDL\\include\\",
                 "/Fo:",
                 "${workspaceFolder}\\bin\\int\\debug\\",
@@ -50,12 +52,14 @@
                 "/SUBSYSTEM:CONSOLE",
                 "/opt:ref",
                 "/LIBPATH:${workspaceFolder}\\ext\\SDL\\lib\\x64\\",
+                "/LIBPATH:${workspaceFolder}\\ext\\zlib\\build\\Debug\\",
                 "User32.lib",
                 "Gdi32.lib",
                 "Shell32.lib",
                 "Winmm.lib",
                 "SDL2main.lib",
-                "SDL2.lib"
+                "SDL2.lib",
+                "zlibd.lib"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
